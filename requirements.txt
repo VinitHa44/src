@@ -1,0 +1,13 @@
+motor
+fastapi
+pydantic
+pydantic_settings
+google-auth 
+google-auth-oauthlib 
+google-auth-httplib2 
+google-api-python-client 
+python-multipart
+transformers
+python-jose 
+passlib
+torch

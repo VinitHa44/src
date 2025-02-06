@@ -1,0 +1,585 @@
+{
+	"info": {
+		"_postman_id": "6479bed2-2d30-4b92-bdb9-33d37b84adf8",
+		"name": "Cloud Based File Storage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41539813"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"buyer4 SAD\",\n    \"email\":\"buyer4SA@gmail.com\",\n    \"password\":\"buyer4\",\n    \"role\":\"buyer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/auth/register",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"buyer4@gmail.com\",\n    \"password\":\"buyer4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/auth/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "preload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/products/preload-products",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"preload-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create product with image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzZWxsZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJ1c2VyX2lkIjoiNjdhMzZhNzM5MjQzMzg3Y2UwZjVjYmYwIiwiZXhwIjoxNzM4ODE5MDQ5fQ._XBY42GHw0lH4dqCprfDyqzilE2ljj-3xxSOEtvxGzU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_data",
+									"value": "{\n  \"title\": \"Essence Mascara Lash Princessqqqqqqqqqqq\",\n  \"description\": \"dssdfsdffjkldsjfkdksdfnmdfnfdkflads\",\n  \"category\": \"sdfsdf\",\n  \"price\": 10,\n  \"rating\": 5,\n  \"brand\": \"volvo\",\n  \"thumbnail\": \"https://cdn.dummyjson.com/products/images/bea...\"\n}\n",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1efe3d8a-60ee-45d0-b4b6-acb925745b8c"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/products",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/products",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/products/67a37d8a95c6e34920d8c534",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"67a37d8a95c6e34920d8c534"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzZWxsZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJ1c2VyX2lkIjoiNjdhMzZhNzM5MjQzMzg3Y2UwZjVjYmYwIiwiZXhwIjoxNzM4NzgyMTkyfQ.FNGVacRvIUoRwpjFYvKsaMW8pnyH0pmdnYzcRS-rrHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/products/67a37d8a95c6e34920d8c534",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"67a37d8a95c6e34920d8c534"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzZWxsZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJ1c2VyX2lkIjoiNjdhMzZhNzM5MjQzMzg3Y2UwZjVjYmYwIiwiZXhwIjoxNzM4ODE5NzcxfQ.woIiEx4ZWOWg0MzCM_Is5LwRPFC2a-pljmTzjjDMQDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_data",
+									"value": "{\"title\": \"L'Oreal Paris Voluminous Lash Paradise Mascara\", \"description\": \"This mascara delivers feathery-soft lashes with intense volume and length. Its ultra-soft brush coats each lash evenly for a clump-free, dramatic look.\", \"category\": \"beauty\", \"price\": 10, \"rating\": 5, \"brand\": \"L'Oreal Paris\", \"thumbnail\": \"https://example.com/images/loreal_lash_paradise_thumb.jpg\"}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1efe3d8a-60ee-45d0-b4b6-acb925745b8c"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/products/67a43a24f818f8a3222def1d",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"67a43a24f818f8a3222def1d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/products/download/67a43a24f818f8a3222def1d",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"download",
+								"67a43a24f818f8a3222def1d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "add to cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJidXllcjRAZ21haWwuY29tIiwicm9sZSI6ImJ1eWVyIiwidXNlcl9pZCI6IjY3YTQzZTAwOTQ2M2UzNjA0MjJiNDhhYSIsImV4cCI6MTczODgyNTI5Nn0.BYgCq-Hdz1qA4gQO9FLxH9bBF7ls3j4enWG6m2VcMz4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": [\n        {\"product_id\": \"67a43d4f0c7e86f1276ddeb0\", \"quantity\": 3},\n        {\"product_id\": \"67a43d4f0c7e86f1276ddeb1\", \"quantity\": 4}\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/cart/add",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJidXllcjJAZ21haWwuY29tIiwicm9sZSI6ImJ1eWVyIiwidXNlcl9pZCI6IjY3YTM2YTNiOTI0MzM4N2NlMGY1Y2JlZCIsImV4cCI6MTczODgyMzg2MH0.JAczmiAQIzTwL1CXwjfchdB_kOzq2fUsnRByLoCicVY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/cart/remove/67a43a92f818f8a3222def1e",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cart",
+								"remove",
+								"67a43a92f818f8a3222def1e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all carts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJidXllcjJAZ21haWwuY29tIiwicm9sZSI6ImJ1eWVyIiwidXNlcl9pZCI6IjY3YTM2YTNiOTI0MzM4N2NlMGY1Y2JlZCIsImV4cCI6MTczODgyMzg2MH0.JAczmiAQIzTwL1CXwjfchdB_kOzq2fUsnRByLoCicVY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/cart",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "post order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJidXllcjRAZ21haWwuY29tIiwicm9sZSI6ImJ1eWVyIiwidXNlcl9pZCI6IjY3YTQzZTAwOTQ2M2UzNjA0MjJiNDhhYSIsImV4cCI6MTczODgyNzY0Nn0.hZ2x-JrcMAsBR4qkTmBeumptHWInvGDgXizbr0alU5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": [\n        {\"product_id\": \"67a43d4f0c7e86f1276ddeb2\", \"quantity\": 4}\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/orders",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJidXllcjRAZ21haWwuY29tIiwicm9sZSI6ImJ1eWVyIiwidXNlcl9pZCI6IjY3YTQzZTAwOTQ2M2UzNjA0MjJiNDhhYSIsImV4cCI6MTczODgyNzY0Nn0.hZ2x-JrcMAsBR4qkTmBeumptHWInvGDgXizbr0alU5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/orders",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJidXllcjRAZ21haWwuY29tIiwicm9sZSI6ImJ1eWVyIiwidXNlcl9pZCI6IjY3YTQzZTAwOTQ2M2UzNjA0MjJiNDhhYSIsImV4cCI6MTczODgyNzY0Nn0.hZ2x-JrcMAsBR4qkTmBeumptHWInvGDgXizbr0alU5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/orders/67a45bcbfbd5c567b79712eb",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"orders",
+								"67a45bcbfbd5c567b79712eb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "complaint",
+			"item": [
+				{
+					"name": "post complaint",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":\"67a43e009463e360422b48aa\",\n    \"order_id\":\"67a45bcbfbd5c567b79712eb\",\n    \"product_id\":\"67a43d4f0c7e86f1276ddeb0\",\n    \"issue\":\"product is damaged and not in good condition to use and the expiry date is over\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/complaints/",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"complaints",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
